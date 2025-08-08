@@ -23,6 +23,13 @@ return new class extends Migration
             $table->foreignIdFor(App\Models\Tag::class);
             $table->timestamps();
         });
+
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(App\Models\Post::class);
+            $table->foreignIdFor(App\Models\Tag::class);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -32,5 +39,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('tags');
         Schema::dropIfExists('job_tag');
+        Schema::dropIfExists('post_tag');
     }
 };
